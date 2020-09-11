@@ -30,7 +30,7 @@ export default {
      */
     mounted() {
         Nova.$on('field-update-' + this.field.attribute, ({value}) => {
-            if (this.field.disableAutoUpdateWhenUpdating === true && this.$router.currentRoute.name !== 'create') {
+            if (this.field.disableAutoUpdateWhenUpdating === true && this.$router.currentRoute.name !== this.field.newRouteSlug) {
                 return;
             }
             this.value = slugify(value, this.field.slugifyOptions || {});
@@ -77,7 +77,7 @@ export default {
         setInitialValue() {
           this.value = this.field.value || ''
           if(this.$router.currentRoute.name === 'create') {
-            this.appendSlugPrefix() 
+            this.appendSlugPrefix()
           }
         },
 

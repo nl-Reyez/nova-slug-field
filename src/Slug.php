@@ -23,6 +23,13 @@ class Slug extends Field
     private $disableAutoUpdateWhenUpdating = false;
 
     /**
+     * route part that indicates a new/create route
+     *
+     * @var string
+     */
+    private $newRouteSlug = 'create';
+
+    /**
      * Optionally show a full url
      * @var null|string
      */
@@ -41,7 +48,7 @@ class Slug extends Field
      *
      * @var null|string
      */
-    private $slugPrefix; 
+    private $slugPrefix;
 
     /**
      * Specify options to pass to speakingurl.
@@ -65,6 +72,17 @@ class Slug extends Field
     public function disableAutoUpdateWhenUpdating(): Element
     {
         $this->disableAutoUpdateWhenUpdating = true;
+        return $this;
+    }
+
+    /**
+     * set an alternative to 'create' like 'new'
+     *
+     * @return $this
+     */
+    public function setNewRouteSlug($slug = 'create'): Element
+    {
+        $this->newRouteSlug = $slug;
         return $this;
     }
 
